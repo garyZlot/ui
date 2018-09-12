@@ -245,14 +245,6 @@ const rootNav = [
   },
   {
     scope:          'global',
-    id:             'global-catalogs',
-    localizedLabel: 'nav.admin.catalogs',
-    route:          'global-admin.catalog',
-    resource:       ['catalog'],
-    resourceScope:  'global',
-  },
-  {
-    scope:          'global',
     id:             'global-accounts',
     localizedLabel: 'nav.admin.accounts',
     route:          'global-admin.accounts',
