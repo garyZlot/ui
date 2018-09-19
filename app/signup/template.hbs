@@ -3,16 +3,16 @@
   {{#if showReset}}
     {{#link-to 'login' (query-params resetPassword=true) classNames="inline-block mb-10"}}Reset Password{{/link-to}}
   {{/if}}
-  {{#if emailSent}}
+  {{#if registerSucc}}
     <div class="row" style="max-width: 500px;">
       <div class="col span-12 text-center">
-        <h1>{{t 'signupPage.emailSuccess.header' appName=settings.appName}}</h1>
-        <p>{{t 'signupPage.emailSuccess.confirm.subtext'}}</p>
+        <h1>{{t 'signupPage.registerSuccess.header' appName=settings.appName}}</h1>
+        <p>{{t 'signupPage.registerSuccess.confirm.subtext'}}</p>
       </div>
       {{#if loading}}
         <button class="btn bg-primary mt-10 btn-disabled"><i class="icon icon-spinner icon-spin"></i> {{t 'generic.loading'}}</button>
       {{else}}
-        <button class="btn bg-primary mt-10" name="submit" {{action "register"}}>{{t 'signupPage.emailSuccess.confirm.resend'}}</button>
+        <button class="btn bg-primary mt-10" name="submit" {{action "cancel"}}>{{t 'signupPage.registerSuccess.confirm.oktext'}}</button>
       {{/if}}
     </div>
   {{else}}
@@ -26,10 +26,27 @@
           </div>
         </div>
 
-        <div class="row inline-form pt-15 pb-30">
+        <div class="row inline-form pt-15">
           <label for="email">{{t 'signupPage.form.labels.email'}}{{field-required}}</label>
           <div name="email">
             {{input type="email" value=model.email}}
+          </div>
+        </div>
+
+        <div class="row inline-form pt-15">
+          <label for="code">{{t 'signupPage.form.labels.code'}}{{field-required}}</label>
+          <div name="code" class="input-group ember-view">
+            {{input type="text" value=model.code classNames="form-control"}}
+            <span class="input-group-btn">
+              <button class="bg-primary" type="button" id="getCodeBtn" {{action "getEmailCode"}}>{{t 'signupPage.form.codeButton'}}</button>
+            </span>
+          </div>
+        </div>
+
+        <div class="row inline-form pt-15">
+          <label for="password">{{t 'signupPage.form.labels.password'}}{{field-required}}</label>
+          <div name="password">
+            {{input type="password" value=model.password}}
           </div>
         </div>
         <div class="text-center mt-15">
