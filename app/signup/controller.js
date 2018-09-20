@@ -96,8 +96,8 @@ export default Controller.extend({
     }
   },
 
-  validate: observer('model.name', 'model.email', 'model.code', 'model.password', function() {
-    if (this.get('model.name') && this.get('model.email') && this.get('model.code') && this.get('model.password')) {
+  validate: observer('model.email', 'model.code', 'model.password', function() {
+    if (this.get('model.email') && this.get('model.code') && this.get('model.password')) {
       if (this.get('errors')) {
         this.set('errors', []);
       }
